@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+
+
+
+    <script src="angular.min.js"></script>
+    <!--<script src="angular/i18n/angular-locale_en-us.js"></script>
+    <script src="angular/i18n/angular-locale_hi-in.js"></script>-->
+    <script src="tmhDynamicLocale.min.js"></script>
+    <script>
+        //https://github.com/angular/bower-angular-i18n
+        var app = angular.module('myApp', ['tmh.dynamicLocale']);
+        app.controller("ctrl", function($scope, tmhDynamicLocale) {
+
+            $scope.changeLocale=(locale)=>{
+                tmhDynamicLocale.set(locale);
+            }
+
+            tmhDynamicLocale.set('hi-in');
+            $scope.today = new Date();
+            $scope.salary = 999921;
+        });
+    </script>
+</head>
+
+<body ng-app="myApp" ng-controller="ctrl">
+    <h2>dynamic locale example</h2>
+    <!-- <button ng-click="changeLocale(" -->
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown button
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#" ng-click="changeLocale('hi-in')">Hindi India</a>
+              <a class="dropdown-item" href="#" ng-click="changeLocale('en-us')">English US</a>
+              <a class="dropdown-item" href="#" ng-click="changeLocale('es-es')">Es Es</a>
+            </div>
+          </div>
+        {{today|date}}
+    <br> {{salary|currency}} Your Balance is {{salary}}
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+   
+</body>
+
+</html>
